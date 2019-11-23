@@ -1,22 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import { Provider } from 'react-redux'
+import { Route, BrowserRouter as Router } from 'react-router-dom'
 import store from './store'
 
 import './index.css';
-// import App from './App';
-import TopContainer from './container/TopContainer';
-import * as serviceWorker from './serviceWorker';
+import Step1Container from './container/Step1Container';
+import Step2Container from './container/Step2Container';
+import Step3Container from './container/Step3Container';
+import Step4Container from './container/Step4Container';
 
 ReactDOM.render(
   <Provider store={store}>
-    {/* <App /> */}
-    <TopContainer />
+      <Router>
+        <div>
+          <Route exact path="/" component={Step1Container} />
+          <Route exact path="/step2" component={Step2Container} />
+          <Route path="/step3" component={Step3Container} />
+          <Route path="/step4" component={Step4Container} />
+        </div>
+    </Router>
   </Provider>,
   document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();

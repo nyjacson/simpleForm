@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Step1Page from '../components/Step1Page'
+import Step4Page from '../components/Step4Page'
 import { initDishesAction } from '../actions/dishesAction'
 
-class TopContainer extends Component {
+class Step4Container extends Component {
   render() {
     const { dishesList, initDishes } = this.props;
     return (
-      <Step1Page dishesList={dishesList} initDishes={initDishes} />
+      <Step4Page dishesList={dishesList} initDishes={initDishes} />
     );
   }
 }
@@ -26,4 +26,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(TopContainer)
+)(Step4Container)

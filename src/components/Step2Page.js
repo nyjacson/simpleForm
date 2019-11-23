@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Stepper from './common/Stepper';
 import { Link } from 'react-router-dom'
 
-export default class Step1Page extends Component {
+export default class Step2Page extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,18 +32,17 @@ export default class Step1Page extends Component {
     return (
       <div>
         <div>
-          <Stepper step={1} />
+          <Stepper step={3} />
         </div>
-        <p>Please select a meal</p>
+        <p>Please select a Restaurant</p>
         <select name="meal" id="meal" onChange={this.onChangeSelect}>
           <option value="Breakfast">Breakfast</option>
           <option value="Lunch">Lunch</option>
           <option value="Dinner">Dinner</option>
         </select>
-        <p>Please Enter Number of Table</p>
-        <input type="number" onChange={this.onChangeInput} value={this.state.numberOfPeople} />
         <div>
-          <Link to='step2' onClick={this.onSubmit}>Next</Link>
+          <Link to='/'>Previous</Link>
+          <Link to='step3' onClick={this.onSubmit}>Next</Link>
         </div>
       </div>
     );
