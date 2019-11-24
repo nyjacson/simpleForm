@@ -1,15 +1,15 @@
-import * as Dishes from '../constants/dishesConst';
+import * as constants from '../constants/const';
 
-const initialState = {
-  dishesList: []
+export const initialState = {
+  items: []
 };
 
-export default function dishes(state = initialState, action) {
+export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case Dishes.INIT_DISHES:
+    case constants.INIT_DISHES:
       const items = action.items;
       return Object.assign({}, state, {
-        list: items
+        items: items
       });
     default:
       return state;

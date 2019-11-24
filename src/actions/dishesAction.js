@@ -1,13 +1,12 @@
 import axios from 'axios';
-import * as Dishes from '../constants/dishesConst';
+import * as constants from '../constants/const';
 
 export const initDishesAction = () => {
   return dispatch => {
     axios.get('http://localhost:3001/dishes').then(
       response => {
-        console.log(response.data);
         dispatch({
-          type: Dishes.INIT_DISHES,
+          type: constants.INIT_DISHES,
           items: response.data
       })}
     ).catch(

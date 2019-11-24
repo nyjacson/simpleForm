@@ -1,7 +1,6 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 
 function Stepper({ step }) {
-  console.log('step', step);
   return (
     <div>
       <ul>
