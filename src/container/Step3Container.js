@@ -13,7 +13,6 @@ class Step3Container extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log('state', state.dishes)
   return {
     dishesList: state.dishes
   };

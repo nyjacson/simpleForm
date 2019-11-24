@@ -28,7 +28,6 @@ export default class Step3Page extends Component {
   }
 
   render() {
-    console.log('dishes', this.props.dishesList)
     return (
       <div>
         <div>

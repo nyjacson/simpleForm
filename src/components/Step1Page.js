@@ -6,9 +6,13 @@ export default class Step1Page extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedMeal: props.selectedMeal || "Breakfast",
-      numberOfPeople: props.numberOfPeople || 0
+      selectedMeal: props.userInput.selectedMeal || "breakfast",
+      numberOfPeople: props.userInput.numberOfPeople || 0
     };
+  }
+
+  componentDidMount() {
+    this.props.initDishes();
   }
 
   onChangeInput = e => {
@@ -23,27 +27,26 @@ export default class Step1Page extends Component {
     });
   };
 
-  onSubmit = () => {
-    this.props.initDishes();
+  onClickNext = () => {
+    this.props.updateUserInput1(this.state)
   }
 
   render() {
-    console.log('dishes', this.props.dishesList)
     return (
       <div>
         <div>
           <Stepper step={1} />
         </div>
         <p>Please select a meal</p>
-        <select name="meal" id="meal" onChange={this.onChangeSelect}>
-          <option value="Breakfast">Breakfast</option>
-          <option value="Lunch">Lunch</option>
-          <option value="Dinner">Dinner</option>
+        <select name="meal" id="meal" onChange={this.onChangeSelect} defaultValue={this.state.selectedMeal}>
+          <option value="breakfast">Breakfast</option>
+          <option value="lunch">Lunch</option>
+          <option value="dinner">Dinner</option>
         </select>
         <p>Please Enter Number of Table</p>
         <input type="number" onChange={this.onChangeInput} value={this.state.numberOfPeople} />
         <div>
-          <Link to='step2' onClick={this.onSubmit}>Next</Link>
+          <Link to='step2' onClick={this.onClickNext}>Next</Link>
         </div>
       </div>
     );
