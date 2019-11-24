@@ -1,25 +1,26 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Step3Page from '../components/Step3Page'
-import { initDishesAction } from '../actions/dishesAction'
+import { updateUserInput3 } from '../actions/userInputAction'
+import { getDishList } from '../selector/userInputSelector';
 
 class Step3Container extends Component {
   render() {
-    const { dishesList, initDishes } = this.props;
+    const { dishesList, updateUserInput3 } = this.props;
     return (
-      <Step3Page dishesList={dishesList} initDishes={initDishes} />
+      <Step3Page dishesList={dishesList} updateUserInput3={updateUserInput3} />
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    dishesList: state.dishes
+    dishesList: getDishList(state)
   };
 }
 
 const mapDispatchToProps = dispatch => ({
-  initDishes: () => dispatch(initDishesAction()) 
+  updateUserInput3: (selected) => dispatch(updateUserInput3(selected)) 
 })
 
 export default connect(

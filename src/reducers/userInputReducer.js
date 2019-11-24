@@ -15,6 +15,10 @@ export default function reducer(state = initialState, action) {
         return Object.assign({}, state, {
           restaurant: action.data
         });
+    case constants.USER_INPUT_3:
+        return Object.assign({}, state, {
+          ...action.data
+        });
     default:
       return state;
   }

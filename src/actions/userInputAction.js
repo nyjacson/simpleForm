@@ -13,3 +13,10 @@ export function updateUserInput2(step2Input) {
     data: step2Input
   }
 }
+
+export function updateUserInput3(step3Input) {
+  return {
+    type: constants.USER_INPUT_3,
+    data: step3Input
+  }
+}

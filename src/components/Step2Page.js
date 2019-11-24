@@ -22,7 +22,7 @@ export default class Step2Page extends Component {
 
   render() {
     const options = this.props.restaurantList.map((r, idx) => {
-      return <option key={idx} value={r.restaurant}>{r.restaurant}</option>
+      return <option key={idx} value={r.restaurant} selected={r.restaurant === this.state.selectedRestaurant}>{r.restaurant}</option>
     })
     return (
       <div>
@@ -30,7 +30,8 @@ export default class Step2Page extends Component {
           <Stepper step={3} />
         </div>
         <p>Please select a Restaurant</p>
-        <select name="meal" id="meal" onChange={this.onChangeSelect} defaultValue={this.state.selectedRestaurant}>
+        <select name="restaurant" id="restaurant" onChange={this.onChangeSelect}>
+          <option selected disabled hidden>Choose here</option>
           {options}
         </select>
         <div>

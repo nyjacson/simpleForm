@@ -6,45 +6,72 @@ export default class Step3Page extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedMeal: props.selectedMeal || "Breakfast",
-      numberOfPeople: props.numberOfPeople || 0
+      // dishesList: props.dishesList || [],
+      order: [
+        {
+          numberOfServings: props.numberOfServings || 0,
+          selectedDish: props.selectedDish || '',
+        }
+      ],
+      sectionCount: 1
     };
   }
 
   onChangeInput = e => {
     this.setState({
-      numberOfPeople: e.target.value
+      numberOfServings: e.target.value
     });
   };
 
   onChangeSelect = e => {
     this.setState({
-      selectedMeal: e.target.value
+      selectedDish: e.target.value
     });
   };
 
-  onSubmit = () => {
-    this.props.initDishes();
+  onClickNext = () => {
+    this.props.updateUserInput3(this.state.selectedRestaurant)
   }
 
   render() {
+    const options = this.props.dishesList.map((d, idx) => {
+      return <option key={idx} value={d.name}>{d.name}</option>
+    })
+
+    const inputSection = [];
+    for (let i=0; i < this.state.sectionCount; i++) {
+      const contents = (
+        <div>
+          <p>Please select a Dish</p>
+          <select name="dish" id="dish" onChange={this.onChangeSelect}>
+            {options}
+          </select>
+          <p>Please Enter Number of Servings</p>
+          <input type="number" onChange={this.onChangeInput} value={this.state.numberOfServings} />
+          <div>+</div>
+        </div>
+      )
+      inputSection.push(contents)
+    }
+
     return (
       <div>
         <div>
           <Stepper step={3} />
         </div>
-        <p>Please select a Dish</p>
-        <select name="meal" id="meal" onChange={this.onChangeSelect}>
-          <option value="Breakfast">Breakfast</option>
-          <option value="Lunch">Lunch</option>
-          <option value="Dinner">Dinner</option>
-        </select>
-        <p>Please Enter Number of Servings</p>
-        <input type="number" onChange={this.onChangeInput} value={this.state.numberOfPeople} />
-        +
+        <div>
+          {/* <p>Please select a Dish</p>
+          <select name="dish" id="dish" onChange={this.onChangeSelect}>
+            {options}
+          </select>
+          <p>Please Enter Number of Servings</p>
+          <input type="number" onChange={this.onChangeInput} value={this.state.numberOfServings} />
+          <div>+</div> */}
+          {inputSection}
+        </div>
         <div>
           <Link to='step2'>Previous</Link>
-          <Link to='step4' onClick={this.onSubmit}>Next</Link>
+          <Link to='step4' onClick={this.onClickNext}>Next</Link>
         </div>
       </div>
     );
