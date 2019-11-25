@@ -16,12 +16,12 @@ const button = css`
   }
 `
 
-function Button({ isDisabled, label }) {
+function Select({ isDisabled, label }) {
   return (
     <div css={button}>
-      <button disabled={isDisabled}>{label}</button>
+      <select disabled={isDisabled}>{label}</select>
     </div>
   );
 }
 
-export default Button;
+export default Select;
