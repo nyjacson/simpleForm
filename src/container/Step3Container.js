@@ -6,21 +6,23 @@ import { getDishList } from '../selector/userInputSelector';
 
 class Step3Container extends Component {
   render() {
-    const { dishesList, updateUserInput3 } = this.props;
+    const { dishesList, updateUserInput3, order, sectionCount } = this.props;
     return (
-      <Step3Page dishesList={dishesList} updateUserInput3={updateUserInput3} />
+      <Step3Page dishesList={dishesList} updateUserInput3={updateUserInput3} order={order} sectionCount={sectionCount} />
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    dishesList: getDishList(state)
+    dishesList: getDishList(state),
+    order: state.userInput.order,
+    sectionCount: state.userInput.sectionCount
   };
 }
 
 const mapDispatchToProps = dispatch => ({
-  updateUserInput3: (selected) => dispatch(updateUserInput3(selected)) 
+  updateUserInput3: (order) => dispatch(updateUserInput3(order)) 
 })
 
 export default connect(

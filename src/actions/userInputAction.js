@@ -20,3 +20,16 @@ export function updateUserInput3(step3Input) {
     data: step3Input
   }
 }
+
+export const submitAction = () => {
+  return (dispatch, getState) => {
+    const state = getState();
+    const submitData = {
+      meal: state.userInput.selectedMeal,
+      numberOfPeople: state.userInput.numberOfPeople,
+      restaurant: state.userInput.restaurant,
+      dishes: state.userInput.order
+    }
+    console.log('submit Data:', JSON.stringify(submitData))
+  }
+}

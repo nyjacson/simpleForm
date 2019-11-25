@@ -13,8 +13,4 @@ function Stepper({ step }) {
   );
 }
 
-// Stepper.propTypes = {
-//   Step: PropTypes.number.isRequired
-// };
-
 export default Stepper;
