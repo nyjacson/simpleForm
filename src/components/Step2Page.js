@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Stepper from './common/Stepper';
+import Select from './common/Select';
 import Button from './common/Button';
 import { Link } from 'react-router-dom'
 
@@ -31,10 +32,10 @@ export default class Step2Page extends Component {
           <Stepper step={3} />
         </div>
         <p>Please select a Restaurant</p>
-        <select name="restaurant" id="restaurant" onChange={this.onChangeSelect}>
+        <Select name="restaurant" id="restaurant" onChange={this.onChangeSelect}>
           <option selected disabled hidden>------</option>
           {options}
-        </select>
+        </Select>
         <div>
           <Link to='/'><Button label="Previous"/></Link>
           <Link to='step3' onClick={this.onClickNext}><Button label="Next" isDisabled={!this.state.selectedRestaurant}/></Link>
