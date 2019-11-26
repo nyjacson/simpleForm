@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Stepper from './common/Stepper';
+import Select from './common/Select';
 import Button from './common/Button';
 import { Link } from 'react-router-dom'
 
@@ -72,10 +73,10 @@ export default class Step3Page extends Component {
       const contents = (
         <div>
           <p>Please select a Dish</p>
-          <select name="select" onChange={e => this.onChangeHandle(e, i)}>
+          <Select name="select" onChange={e => this.onChangeHandle(e, i)}>
             <option selected disabled hidden>------</option>
             {options}
-          </select>
+          </Select>
           <p>Please Enter Number of Servings</p>
           <input type="number" name="input" onChange={e => this.onChangeHandle(e, i)} value={this.state.order[i] && this.state.order[i].numberOfServings} />
         </div>

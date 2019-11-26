@@ -1,25 +1,19 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 
-const button = css`
-  button {
-    background: #03dac5;
+const select = css`
+  select {
+    background: #ffffff;
     padding: 0 20px;
-    border-radius: 3px;
     height: 35px;
     line-height: 35px;
-
-    &:disabled {
-      background-color: #efefef;
-      color: #aaaaaa;
-    }
   }
 `
 
-function Select({ isDisabled, label }) {
+function Select({ children, name, id, onChange, defaultValue}) {
   return (
-    <div css={button}>
-      <select disabled={isDisabled}>{label}</select>
+    <div css={select}>
+      <select name={name} id={id} onChange={onChange} defaultValue={defaultValue}>{children}</select>
     </div>
   );
 }

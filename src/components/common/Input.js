@@ -1,13 +1,17 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 
-const button = css`
-  button {
+const input = css`
+  input {
     background: #ffffff;
     padding: 0 20px;
     border-radius: 3px;
+    font-size: 16px;
     height: 35px;
     line-height: 35px;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
 
     &:disabled {
       background-color: #efefef;
@@ -16,12 +20,12 @@ const button = css`
   }
 `
 
-function Button({ isDisabled, label }) {
+function Input({ type, label, onChange, value }) {
   return (
-    <div css={button}>
-      <button disabled={isDisabled}>{label}</button>
+    <div css={input}>
+      <input type={type} onChange={onChange} value={value} />
     </div>
   );
 }
 
-export default Button;
+export default Input;
