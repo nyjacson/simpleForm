@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
+/** @jsx jsx */
+import { Component } from 'react';
+import { css, jsx } from '@emotion/core'
 import Stepper from './common/Stepper';
 import Select from './common/Select';
 import Button from './common/Button';
 import { Link } from 'react-router-dom'
+import { label } from './common/Styles';
 
 export default class Step2Page extends Component {
   constructor(props) {
@@ -23,20 +26,25 @@ export default class Step2Page extends Component {
   }
 
   render() {
+    const buttonArea = css`{
+      display: flex;
+      justify-content: space-between;
+    }`;
+
     const options = this.props.restaurantList.map((r, idx) => {
       return <option key={idx} value={r.restaurant} selected={r.restaurant === this.state.selectedRestaurant}>{r.restaurant}</option>
     })
     return (
       <div>
         <div>
-          <Stepper step={3} />
+          <Stepper step={1} />
         </div>
-        <p>Please select a Restaurant</p>
+        <p css={label}>Please select a Restaurant</p>
         <Select name="restaurant" id="restaurant" onChange={this.onChangeSelect}>
           <option selected disabled hidden>------</option>
           {options}
         </Select>
-        <div>
+        <div css={buttonArea}>
           <Link to='/'><Button label="Previous"/></Link>
           <Link to='step3' onClick={this.onClickNext}><Button label="Next" isDisabled={!this.state.selectedRestaurant}/></Link>
         </div>

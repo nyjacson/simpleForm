@@ -1,8 +1,12 @@
-import React, { Component } from 'react';
+/** @jsx jsx */
+import { Component } from 'react';
+import { css, jsx } from '@emotion/core'
 import Stepper from './common/Stepper';
 import Select from './common/Select';
 import Button from './common/Button';
+import Input from './common/Input';
 import { Link } from 'react-router-dom'
+import { label } from './common/Styles';
 
 export default class Step3Page extends Component {
   constructor(props) {
@@ -17,6 +21,10 @@ export default class Step3Page extends Component {
       sectionCount: props.sectionCount || 1,
       isDisabled: true
     };
+  }
+
+  componentDidMount() {
+    this.checkIsDisabled();
   }
 
   checkIsDisabled = () => {
@@ -65,35 +73,56 @@ export default class Step3Page extends Component {
   }
 
   render() {
+    const buttonArea = css`{
+      display: flex;
+      justify-content: space-between;
+    }`;
+
+    const section = css`{
+      margin-bottom: 30px;
+      border-bottom: #999999 dotted 1px;
+    }`
+
     const inputSection = [];
     for (let i=0; i < this.state.sectionCount; i++) {
       const options = this.props.dishesList.map((d, idx) => {
         return <option key={idx} value={d.name} name="select" selected={d.name === (this.state.order[i] && this.state.order[i].selectedDish)}>{d.name}</option>
       })
       const contents = (
-        <div>
-          <p>Please select a Dish</p>
+        <div css={section}>
+          <p css={label}>Please select a Dish</p>
           <Select name="select" onChange={e => this.onChangeHandle(e, i)}>
             <option selected disabled hidden>------</option>
             {options}
           </Select>
-          <p>Please Enter Number of Servings</p>
-          <input type="number" name="input" onChange={e => this.onChangeHandle(e, i)} value={this.state.order[i] && this.state.order[i].numberOfServings} />
+          <p css={label}>Please Enter Number of Servings</p>
+          <Input type="number" name="input" onChange={e => this.onChangeHandle(e, i)} value={this.state.order[i] && this.state.order[i].numberOfServings} />
         </div>
       )
       inputSection.push(contents)
     }
 
+    const floatingButton = css`{
+      margin-bottom: 30px;
+      height: 35px;
+      width: 35px;
+      border-radius: 50%;
+      background: #1DE9B6;
+      color: #ffffff;
+      box-shadow: 2px 4px 10px rgba(0,0,0,.2);
+      outline: none;
+    }`;
+
     return (
       <div>
         <div>
-          <Stepper step={3} />
+          <Stepper step={2} />
         </div>
         <div>
           {inputSection}
-          <div><button onClick={this.onClickIncrease}>+</button></div>
+          <div><button css={floatingButton} onClick={this.onClickIncrease}>+</button></div>
         </div>
-        <div>
+        <div css={buttonArea}>
           <Link to='step2'><Button label="Previous"/></Link>
           <Link to='step4' onClick={this.onClickNext}><Button label="Next" isDisabled={this.state.isDisabled}/></Link>
         </div>
