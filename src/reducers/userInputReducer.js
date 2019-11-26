@@ -2,7 +2,9 @@ import * as constants from '../constants/const';
 
 export const initialState = {
   selectedMeal: "",
-  numberOfPeople: 0
+  numberOfPeople: 0,
+  order: [],
+  restaurant: ""
 };
 
 export default function reducer(state = initialState, action) {
