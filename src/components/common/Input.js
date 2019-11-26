@@ -1,17 +1,14 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
+import { baseBox } from './Styles';
 
-const input = css`
+const style = css`
   input {
+    ${baseBox}
     background: #ffffff;
     padding: 0 20px;
-    border-radius: 3px;
-    font-size: 16px;
-    height: 35px;
-    line-height: 35px;
+    margin-bottom: 25px;
     outline: none;
-    appearance: none;
-    -webkit-appearance: none;
 
     &:disabled {
       background-color: #efefef;
@@ -20,10 +17,10 @@ const input = css`
   }
 `
 
-function Input({ type, label, onChange, value }) {
+function Input({ type, label, onChange, value, name }) {
   return (
-    <div css={input}>
-      <input type={type} onChange={onChange} value={value} />
+    <div css={style}>
+      <input type={type} onChange={onChange} value={value} name={name || ''} />
     </div>
   );
 }

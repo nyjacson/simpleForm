@@ -1,13 +1,15 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
+import { baseButton } from './Styles';
 
-const button = css`
+const style = css`
   button {
-    background: #ffffff;
+    ${baseButton}
+    background: #0336ff;
+    color: #ffffff;
+    font-weight: bold;
     padding: 0 20px;
-    border-radius: 3px;
-    height: 35px;
-    line-height: 35px;
+    width: 250px;
 
     &:disabled {
       background-color: #efefef;
@@ -18,7 +20,7 @@ const button = css`
 
 function Button({ isDisabled, label }) {
   return (
-    <div css={button}>
+    <div css={style}>
       <button disabled={isDisabled}>{label}</button>
     </div>
   );
