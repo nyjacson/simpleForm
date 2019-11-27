@@ -1,3 +1,4 @@
+// @flow
 /** @jsx jsx */
 import { Component } from 'react';
 import { css, jsx } from '@emotion/core'
@@ -8,8 +9,29 @@ import Input from './common/Input';
 import { Link } from 'react-router-dom'
 import { label } from './common/Styles';
 
-export default class Step3Page extends Component {
-  constructor(props) {
+type Props = {
+  order: Array<OrderContents>,
+  dishesList: Array<any>,
+  selectedDish: String,
+  numberOfServings: number,
+  selectedDish: string,
+  sectionCount: number,
+  updateUserInput3: Function
+};
+
+type OrderContents = {
+  numberOfServings?: number,
+  selectedDish?: string
+}
+
+type State = {
+  order: Array<OrderContents>,
+  isDisabled: boolean,
+  sectionCount: number
+}
+
+export default class Step3Page extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       order: props.order.length > 0 ? props.order : [
@@ -42,7 +64,7 @@ export default class Step3Page extends Component {
     }
   }
 
-  onChangeHandle = (e, i) => {
+  onChangeHandle = (e: Object, i: number) => {
     const order = this.state.order;
     switch (e.target.name) {
       case 'select':

@@ -1,3 +1,4 @@
+// @flow
 /** @jsx jsx */
 import { Component } from 'react';
 import { css, jsx } from '@emotion/core'
@@ -8,8 +9,19 @@ import Input from './common/Input';
 import { Link } from 'react-router-dom';
 import { label } from './common/Styles';
 
-export default class Step1Page extends Component {
-  constructor(props) {
+type Props = {
+  userInput: Object,
+  initDishes: Function,
+  updateUserInput1: Function
+};
+
+type State = {
+  selectedMeal: string,
+  numberOfPeople: number
+}
+
+export default class Step1Page extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       selectedMeal: props.userInput.selectedMeal || "",
@@ -21,13 +33,13 @@ export default class Step1Page extends Component {
     this.props.initDishes();
   }
 
-  onChangeInput = e => {
+  onChangeInput = (e: Object) => {
     this.setState({
       numberOfPeople: e.target.value
     });
   };
 
-  onChangeSelect = e => {
+  onChangeSelect = (e: Object) => {
     this.setState({
       selectedMeal: e.target.value
     });

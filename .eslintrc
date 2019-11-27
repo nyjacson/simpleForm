@@ -1,0 +1,19 @@
+{
+    "extends": [
+      "plugin:flowtype/recommended",
+    ],
+    "plugins": [
+        "flowtype"
+    ],
+    "parser": "babel-eslint",
+    "settings": {
+      "flowtype": {
+        "onlyFilesWithFlowAnnotation": true
+      }
+    },
+    "rules": {
+        "flowtype/define-flow-type": 1,
+        "flowtype/use-flow-type": 1,
+        "no-undef": 2
+     }
+  }

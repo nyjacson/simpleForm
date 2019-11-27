@@ -1,10 +1,16 @@
+// @flow
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import Stepper from './common/Stepper';
 import Button from './common/Button';
 import { Link } from 'react-router-dom'
 
-export default function Step4Page(props) {
+type Props = {
+  userInput: Object,
+  submit: Function
+};
+
+export default function Step4Page(props: Props) {
   const onSubmit = () => {
     props.submit();
   }
