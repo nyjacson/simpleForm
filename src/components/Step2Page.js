@@ -1,3 +1,4 @@
+// @flow
 /** @jsx jsx */
 import { Component } from 'react';
 import { css, jsx } from '@emotion/core'
@@ -7,15 +8,24 @@ import Button from './common/Button';
 import { Link } from 'react-router-dom'
 import { label } from './common/Styles';
 
-export default class Step2Page extends Component {
-  constructor(props) {
+type Props = {
+  selectedRestaurant: string,
+  restaurantList: Array<any>,
+  updateUserInput2: function
+};
+
+type State = {
+  selectedRestaurant: string
+}
+export default class Step2Page extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       selectedRestaurant: props.selectedRestaurant || ""
     };
   }
 
-  onChangeSelect = e => {
+  onChangeSelect = (e: Object) => {
     this.setState({
       selectedRestaurant: e.target.value
     });

@@ -1,5 +1,10 @@
+// @flow
 /** @jsx jsx */
 import {css, jsx} from '@emotion/core'
+
+type Props = {
+  step: number
+}
 
 const style = css`
   {
@@ -28,7 +33,7 @@ const selected = css`
   }
 `
 
-function Stepper({ step }) {
+function Stepper({ step }: Props) {
   const stepList = ['Step 1', 'Step 2', 'Step 3', 'Review']
   return (
     <div>

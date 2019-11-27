@@ -1,6 +1,15 @@
+// @flow
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import { baseBox } from './Styles';
+
+type Props = {
+  children: any,
+  name: string,
+  id: string,
+  onChange: Function,
+  defaultValue: string
+}
 
 const style = css`{
   position: relative;
@@ -21,11 +30,13 @@ const style = css`{
   }
 }`
 
-function Select({ children, name, id, onChange, defaultValue}) {
+function Select({ children, name, id, onChange, defaultValue}: Props) {
+  const path = process.env.PUBLIC_URL || ''
+
   return (
     <div css={style}>
       <select name={name} id={id} onChange={onChange} defaultValue={defaultValue}>{children}</select>
-      <img src={`${process.env.PUBLIC_URL}/arrowDown.svg`} alt="arrow" />
+      <img src={`${path}/arrowDown.svg`} alt="arrow" />
     </div>
   );
 }
