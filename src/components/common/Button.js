@@ -20,6 +20,11 @@ const style = css`
     &:disabled {
       background-color: #efefef;
       color: #aaaaaa;
+      pointer-events: none;
+    }
+
+    &:hover {
+      opacity: 0.8
     }
   }
 `

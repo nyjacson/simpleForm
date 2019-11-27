@@ -8,8 +8,12 @@ export const baseBox = css`{
   height: 35px;
   line-height: 35px;
   width: 250px;
-  font-size: 15px;}
-`
+  font-size: 15px;
+
+  &:hover {
+    border-color: #cccccc;
+  }
+}`
 
 export const baseButton = css`{
   border-radius: 3px;

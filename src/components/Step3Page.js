@@ -133,6 +133,10 @@ export default class Step3Page extends Component<Props, State> {
       color: #ffffff;
       box-shadow: 2px 4px 10px rgba(0,0,0,.2);
       outline: none;
+
+      &:hover {
+        opacity: 0.8;
+      }
     }`;
 
     return (

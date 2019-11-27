@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import Step2Page from '../components/Step2Page'
 import { updateUserInput2 } from '../actions/userInputAction'
 import { getRestrantList } from '../selector/userInputSelector';
+import Redirect from '../components/common/Redirect';
+
 class Step2Container extends Component {
   render() {
     const { restaurantList, updateUserInput2, selectedRestaurant } = this.props;
@@ -13,9 +15,11 @@ class Step2Container extends Component {
 }
 
 const mapStateToProps = state => {
+  const list = getRestrantList(state);
   return {
-    restaurantList: getRestrantList(state),
-    selectedRestaurant: state.userInput.restaurant
+    restaurantList: list,
+    selectedRestaurant: state.userInput.restaurant,
+    redirectFlag: list.length
   };
 }
 
@@ -26,4 +30,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Step2Container)
+)(Redirect(Step2Container))
