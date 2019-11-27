@@ -6,7 +6,7 @@ import { baseBox } from './Styles';
 type Props = {
   children: any,
   name: string,
-  id: string,
+  id?: string,
   onChange: Function,
   defaultValue: string
 }

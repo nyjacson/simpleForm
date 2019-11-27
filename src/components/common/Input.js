@@ -5,10 +5,10 @@ import { baseBox } from './Styles';
 
 type Props = {
   type: string,
-  label: string,
-  onChange: function,
-  value: string,
-  name: string
+  label?: string,
+  onChange: Function,
+  value: string | number,
+  name?: string
 }
 
 const style = css`

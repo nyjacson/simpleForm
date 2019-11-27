@@ -11,7 +11,7 @@ import { label } from './common/Styles';
 type Props = {
   selectedRestaurant: string,
   restaurantList: Array<any>,
-  updateUserInput2: function
+  updateUserInput2: Function
 };
 
 type State = {
