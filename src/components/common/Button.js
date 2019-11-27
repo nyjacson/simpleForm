@@ -1,6 +1,12 @@
+// @flow
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import { baseButton } from './Styles';
+
+type Props = {
+  isDisabled?: boolean,
+  label: string
+}
 
 const style = css`
   button {
@@ -18,7 +24,7 @@ const style = css`
   }
 `
 
-function Button({ isDisabled, label }) {
+function Button({ isDisabled, label }: Props) {
   return (
     <div css={style}>
       <button disabled={isDisabled}>{label}</button>
