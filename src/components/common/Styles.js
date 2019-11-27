@@ -21,7 +21,7 @@ export const baseButton = css`{
 `
 
 export const label = css`{
-  font-size: 14px;
+  font-size: 13px;
   text-align: left;
   }
 `
