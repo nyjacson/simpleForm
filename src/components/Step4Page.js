@@ -20,7 +20,7 @@ export default function Step4Page(props) {
       margin-bottom: 25px;
       font-size: 13px;
 
-      > p:first-child {
+      > p:first-of-type {
         width: 95px;
         font-weight: bold;
         text-align: right;
@@ -48,8 +48,8 @@ export default function Step4Page(props) {
         <div><p>Meal</p><p>{props.userInput.selectedMeal || ""}</p></div>
         <div><p>No. of People</p><p>{props.userInput.numberOfPeople || ""}</p></div>
         <div><p>Restaurant</p><p>{props.userInput.restaurant || ""}</p></div>
-        <div><p class="dishesTitle">Dishes</p><div>{props.userInput.order && props.userInput.order.map(o => {
-        return <div class="dishes"><p>{o.selectedDish}</p><span> - </span><p>{o.numberOfServings}</p></div>
+        <div><p className="dishesTitle">Dishes</p><div>{props.userInput.order && props.userInput.order.map((o, i) => {
+          return <div key={i} className="dishes"><p>{o.selectedDish}</p><span> - </span><p>{o.numberOfServings}</p></div>
         })}</div></div>
       </div>
       <div css={buttonArea}>

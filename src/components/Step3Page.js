@@ -12,7 +12,7 @@ export default class Step3Page extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      order: props.order || [
+      order: props.order.length > 0 ? props.order : [
         {
           numberOfServings: props.numberOfServings || 0,
           selectedDish: props.selectedDish || '',
@@ -86,17 +86,17 @@ export default class Step3Page extends Component {
     const inputSection = [];
     for (let i=0; i < this.state.sectionCount; i++) {
       const options = this.props.dishesList.map((d, idx) => {
-        return <option key={idx} value={d.name} name="select" selected={d.name === (this.state.order[i] && this.state.order[i].selectedDish)}>{d.name}</option>
+        return <option key={idx} value={d.name} name="select">{d.name}</option>
       })
       const contents = (
-        <div css={section}>
+        <div key={i} css={section}>
           <p css={label}>Please select a Dish</p>
-          <Select name="select" onChange={e => this.onChangeHandle(e, i)}>
-            <option selected disabled hidden>------</option>
+          <Select name="select" onChange={e => this.onChangeHandle(e, i)} defaultValue={(this.state.order[i] && this.state.order[i].selectedDish) || "default"}>
+            <option value="default" disabled hidden>------</option>
             {options}
           </Select>
           <p css={label}>Please Enter Number of Servings</p>
-          <Input type="number" name="input" onChange={e => this.onChangeHandle(e, i)} value={this.state.order[i] && this.state.order[i].numberOfServings} />
+          <Input type="number" name="input" onChange={e => this.onChangeHandle(e, i)} value={(this.state.order[i] && this.state.order[i].numberOfServings) || 0} />
         </div>
       )
       inputSection.push(contents)
