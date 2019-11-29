@@ -15,5 +15,9 @@
         "flowtype/define-flow-type": 1,
         "flowtype/use-flow-type": 1,
         "no-undef": 2
-     }
+     },
+     "globals": {
+      "window": true,
+      "document": true
+    }
   }

@@ -23,7 +23,7 @@ ReactDOM.render(
       <Router>
         <div css={style}>
           <Route exact path="/" component={Step1Container} />
-          <Route exact path="/step2" component={Step2Container} />
+          <Route path="/step2" component={Step2Container} />
           <Route path="/step3" component={Step3Container} />
           <Route path="/step4" component={Step4Container} />
         </div>
